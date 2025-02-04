@@ -1,46 +1,21 @@
 package com.senai.Aula01_IntroducaoPOO.Exercicio.CadastroProduto;
 
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Produto produto1 = new Produto ("Tapioca com ovo", 7.99f, 10);
+        Produto produto2 = new Produto ("Pão com ovo", 4.99f, 15);
 
-        Produto produto1 = new Produto("Tapioca", 7.99f, 10);
+        produto1.exibirDetalhes();
+        produto2.exibirDetalhes();
 
-        int opcao;
-        do {
-            String menu = """
-                    _________________________________________________________
-                    |   Escolha uma opção:                                  |
-                    |       1- Exibir detalhes sobre o produto              |
-                    |       2- Atualizar o estoque do produto               |
-                    |       3- Calcular o valor do estoque                  |
-                    |       4- Sair                                         |
-                    _________________________________________________________
-                    """;
-            System.out.println(menu);
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+        produto1.atualizarEstoque(15);
+        produto2.atualizarEstoque(20);
 
-            switch (opcao) {
-                case 1:
-                    produto1.exibirDetalhes();
-                    break;
-                case 2:
-                    System.out.println("Coloque a quantidade atualizada do produto abaixo: ");
-                    produto1.atualizarEstoque(scanner.nextInt());
-                    break;
-                case 3:
-                    produto1.calcularValorEstoque();
-                    break;
-                case 4:
-                    System.out.println("Fim do programa!");
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
-            }
-        } while (opcao != 4);
+        produto1.calcularValorEstoque();
+        produto2.calcularValorEstoque();
 
+        produto1.exibirDetalhes();
+        produto2.exibirDetalhes();
     }
 }
