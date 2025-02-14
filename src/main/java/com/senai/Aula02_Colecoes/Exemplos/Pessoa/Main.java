@@ -3,6 +3,9 @@ package com.senai.Aula02_Colecoes.Exemplos.Pessoa;
 import com.senai.Aula01_IntroducaoPOO.Exemplos.Concessionaria.Carro;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,7 +13,7 @@ public class Main {
         Pessoa pessoa2 = new Pessoa("Pedro", 17);
         Pessoa pessoa3 = new Pessoa("Victor", 20);
 
-        Pessoa[] matrizPessoas = new Pessoa[3];
+        Pessoa[] matrizPessoas = new Pessoa[3]; //matriz pessoas
 
 
         matrizPessoas[0] = pessoa1;
@@ -22,7 +25,7 @@ public class Main {
         }
 
         matrizPessoas[0].falar("Oi!!!");
-        System.out.println(matrizPessoas[3].nome);
+        System.out.println(matrizPessoas[2].nome);
 
         ArrayList lista = new ArrayList(); //lista genérica
 
@@ -31,8 +34,8 @@ public class Main {
         lista.add("teste");
         lista.add(pessoa1);
 
-        Pessoa pessoa = (Pessoa) lista.get(3); //pegando
-        pessoa.falar("teste");
+        Pessoa pessoa4 = (Pessoa) lista.get(3); //pegando
+        pessoa4.falar("teste");
 
         ArrayList<Pessoa> listaPessoas = new ArrayList(); //lista de pessoas
         listaPessoas.add(pessoa2);
@@ -49,6 +52,35 @@ public class Main {
 
         listaPessoas.add(0, pessoa3);
         listar(listaPessoas);
+
+        System.out.println("\n-----teste-----");
+        listaPessoas.forEach(System.out::println); //for each puxa a função sout pra mostrar todos os objetos da lista
+
+        listaPessoas.add(pessoa2);
+
+        System.out.println("\n-----lista-----");
+        List<Pessoa> listaFiltrada = listaPessoas.stream().filter(pessoa -> pessoa.idade>=18).collect(Collectors.toList()); //filtra listaPessoas e cria uma lista nova só com os objetos filtrados
+        listaFiltrada.forEach(System.out::println);
+
+        System.out.println("\n-----lista-----");
+        List<Pessoa> listaFiltrada2 = listaPessoas.stream().filter(pessoa -> pessoa.idade>=20).toList(); //mesma coisa do anterior
+        listaFiltrada2.forEach(System.out::println);
+
+        System.out.println("\n-----lista-----");
+        List<Pessoa> listaFiltrada3 = listaPessoas.stream().filter(pessoa -> pessoa.nome.toLowerCase().contains("pe")).toList(); //filtra pelas letras do nome da pessoa (toLowerCase -> pesquisa com letras minúsculas, independente se a pessoa tiver letra maiúscula)
+        listaFiltrada3.forEach(System.out::println);
+
+        //Criando uma pessoa com scanner
+        System.out.println("");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Preencha as informações a seguir: ");
+        System.out.println("Nome: ");
+        String nome = scanner.nextLine();
+        System.out.println("Idade: ");
+        int idade = scanner.nextInt();
+        listaPessoas.add(new Pessoa(nome, idade));
+        listaPessoas.forEach(System.out::println);
+
     }
 
     public static void listar(ArrayList<Pessoa> lista){
