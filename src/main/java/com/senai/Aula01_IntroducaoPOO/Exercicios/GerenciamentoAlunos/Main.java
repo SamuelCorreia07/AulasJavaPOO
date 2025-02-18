@@ -1,4 +1,4 @@
-package com.senai.Aula01_IntroducaoPOO.Exercicio.GerenciamentoAlunos;
+package com.senai.Aula01_IntroducaoPOO.Exercicios.GerenciamentoAlunos;
 
 import java.util.Scanner;
 

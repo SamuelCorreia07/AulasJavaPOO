@@ -1,4 +1,4 @@
-package com.senai.Aula01_IntroducaoPOO.Exercicio.CadastroProduto;
+package com.senai.Aula01_IntroducaoPOO.Exercicios.CadastroProduto;
 
 
 public class Main {
