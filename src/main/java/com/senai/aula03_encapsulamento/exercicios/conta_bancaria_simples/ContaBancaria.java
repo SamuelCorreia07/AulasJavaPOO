@@ -8,8 +8,10 @@ public class ContaBancaria {
         this.titular = titular;
         if (saldo >= 0){
             this.saldo = saldo;
-        } else System.out.println("Saldo inválido!" +
-                "\nO valor atribuido a saldo será R$0.0");
+        } else {
+            System.out.println("Saldo inválido!" +
+                    "\nO valor atribuido a saldo será R$0.0");
+        }
     }
 
     public String getTitular() {
@@ -24,21 +26,40 @@ public class ContaBancaria {
         return saldo;
     }
 
-    public void depositar (double valor) {
+    public boolean depositar (double valor) {
         if (valor >= 0) {
             saldo += valor;
-            System.out.println();
-        } else System.out.println("Valor inválido!");
+            mensagemDeSucesso("Depositar", this);
+            return true;
+        } else {
+            System.out.println("Valor inválido!");
+            return false;
+        }
     }
 
-    public void sacar (double valor) {
+    public boolean sacar (double valor) {
         if (valor > 0 && valor <= saldo) {
             saldo -= valor;
-            System.out.println("Saque realizado com sucesso!" +
-                    "\nValor atual: R$" + saldo);
+            mensagemDeSucesso("Sacar", this);
+            return true;
         } else if (valor <= 0) {
             System.out.println("Valor para saque inválido!");
-        } else System.out.println("Saldo insuficiente!");
+            return false;
+        } else {
+            System.out.println("Saldo insuficiente!");
+            return false;
+        }
+    }
+
+    public static void mensagemDeSucesso (String operacao, ContaBancaria minhaConta){
+        System.out.println(operacao + " para " + minhaConta.titular + " realizado com sucesso!" +
+                "\nSaldo atual = R$" + minhaConta.saldo);
+    }
+
+    public void transferir (double valorTransferencia, ContaBancaria contaDestino) {
+        if (sacar(valorTransferencia)) {
+            contaDestino.depositar(valorTransferencia);
+        }
     }
 
     @Override

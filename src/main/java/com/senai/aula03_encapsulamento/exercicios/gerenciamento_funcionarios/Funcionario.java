@@ -6,8 +6,12 @@ public class Funcionario {
     private String cargo;
 
     public Funcionario(String nome, double salario, String cargo) {
-        this.nome = nome;
-        this.salario = salario;
+        if (nome == null || nome.isEmpty()) {
+            System.out.println("Nome inválido!");
+        } else this.nome = nome;
+        if (salario >= 1320) {
+            this.salario = salario;
+        } else System.out.println("Paga mais, sem vergonha!");
         this.cargo = cargo;
     }
 
