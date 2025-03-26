@@ -1,13 +1,35 @@
 package com.senai.aula05_polimorfismo.exercicios.gestao_produtos;
 
-public class Produto {
-    private double precoFinal;
+import java.util.ArrayList;
 
-    public Produto(double precoFinal) {
-        this.precoFinal = precoFinal;
+public class Produto {
+    private String nomeProduto;
+    private double precoProduto;
+    private ArrayList<Double> impostos;
+
+    public Produto(String nomeProduto, double precoProduto) {
+        this.nomeProduto = nomeProduto;
+        this.precoProduto = precoProduto;
+        this.impostos = new ArrayList<>();
     }
 
-    public double getPrecoFinal() {
-        return precoFinal;
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public double getPrecoProduto() {
+        return precoProduto;
+    }
+
+    public ArrayList<Double> getImpostos() {
+        return impostos;
+    }
+
+    public void calcularPrecoFinal(){
+        System.out.println("Calculadora Genérica");
+    }
+
+    public void adicionarImposto(double imposto){
+        impostos.add(imposto);
     }
 }

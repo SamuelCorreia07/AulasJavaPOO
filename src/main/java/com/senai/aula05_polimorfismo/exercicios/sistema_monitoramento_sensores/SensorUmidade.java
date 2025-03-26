@@ -8,7 +8,7 @@ public class SensorUmidade extends Sensor{
     @Override
     public void valorSensor() {
         System.out.printf(
-            "Valor Umidade Sensor: %.1f\\%", getValor()
+            "Valor Umidade Sensor: %.1f%%\n", getValor()
         );
     }
 }

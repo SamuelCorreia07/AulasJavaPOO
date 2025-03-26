@@ -1,17 +1,29 @@
 package com.senai.aula05_polimorfismo.exercicios.sistema_reservas_hotel;
 
 public class Reserva {
-    private double custo;
+    private String nomeCliente;
+    private int numDiarias;
+    private double tarifaDiaria;
 
-    public Reserva(double custo) {
-        this.custo = custo;
+    public Reserva(String nomeCliente, int numDiarias, double tarifaDiaria) {
+        this.nomeCliente = nomeCliente;
+        this.numDiarias = numDiarias;
+        this.tarifaDiaria = tarifaDiaria;
     }
 
-    public double getCusto() {
-        return custo;
+    public String getNomeCliente() {
+        return nomeCliente;
     }
 
-    public double calcularCusto(){
-        return 0.0;
+    public int getNumDiarias() {
+        return numDiarias;
+    }
+
+    public double getTarifaDiaria() {
+        return tarifaDiaria;
+    }
+
+    public void calcularCustoTotal(){
+        System.out.println("Calculadora genérica");
     }
 }
