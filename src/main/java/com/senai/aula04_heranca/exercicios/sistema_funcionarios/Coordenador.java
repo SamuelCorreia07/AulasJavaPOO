@@ -1,6 +1,7 @@
 package com.senai.aula04_heranca.exercicios.sistema_funcionarios;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Coordenador extends Funcionario{
     private ArrayList<Professor> equipeProfessores;
@@ -10,7 +11,7 @@ public class Coordenador extends Funcionario{
         this.equipeProfessores = equipeProfessores;
     }
 
-    public ArrayList<Professor> getEquipeProfessores() {
+    public List<Professor> getEquipeProfessores() {
         return equipeProfessores;
     }
 
