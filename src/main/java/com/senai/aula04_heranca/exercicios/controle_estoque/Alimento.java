@@ -3,7 +3,6 @@ package com.senai.aula04_heranca.exercicios.controle_estoque;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
 public class Alimento extends Produto {
     private String dataValidade;
 

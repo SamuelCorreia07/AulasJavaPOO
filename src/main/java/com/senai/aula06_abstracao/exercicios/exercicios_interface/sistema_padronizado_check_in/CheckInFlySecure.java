@@ -1,12 +1,13 @@
 package com.senai.aula06_abstracao.exercicios.exercicios_interface.sistema_padronizado_check_in;
 
 public interface CheckInFlySecure {
-    double PESO_MAXIMO_BAGAGEM = 23;
+    double PESO_MAX_BAGAGEM_NACIONAL = 23;
+    double PESO_MAX_BAGAGEM_INTERNACIONAL = 32;
     double QTD_MAXIMA_BAGAGENS = 5;
 
-    void validarDocumento();
-    void emitirCartaoEmbarque();
-    void realizarCheckIn();
+    void validarDocumento(String cpf);
+    void emitirCartaoEmbarque(String nome);
+    void realizarCheckIn(Passageiro passageiro);
 
     static void mensagemBoasVindas() {
         System.out.println("Seja bem-vindo ao FlySecure!");
@@ -16,29 +17,29 @@ public interface CheckInFlySecure {
         System.out.println("Check-in seguro realizado pela FlySecure");
     }
 
-    default void validarPesoBagagem(int pesoBagagem){
-        if (pesoBagagem > PESO_MAXIMO_BAGAGEM) {
-            System.out.println("Bagagem de mão não autorizada (acima do peso máximo)!");
+    default void validarPesoBagagemNacional(int pesoBagagemNacional){
+        if (pesoBagagemNacional > PESO_MAX_BAGAGEM_NACIONAL) {
+            System.out.println("Bagagem não autorizada (acima do peso máximo para viagens nacionais)!");
         } else {
-            System.out.println("Bagagem de mão autorizada!");
+            System.out.println("Bagagem autorizada!");
         }
     }
 
-    default void validarQtdBagagem(int qtdBagagem){
-        if (qtdBagagem > QTD_MAXIMA_BAGAGENS) {
-            System.out.println("Quantidade de bagagens não permitida (excedeu o limite)!");
+    default void validarPesoBagagemInternacional(int pesoBagagemInternacional){
+        if (pesoBagagemInternacional > PESO_MAX_BAGAGEM_INTERNACIONAL) {
+            System.out.println("Bagagem não autorizada (acima do peso máximo para viagens internacionais)!");
         } else {
-            System.out.println("Quantidade de bagagens autorizada!");
+            System.out.println("Bagagem autorizada!");
         }
     }
 
-    default void mensagemDadosValidados (String dados) {
-        if (validarDados(dados)) {
+    default void mensagemDadosValidados (String nome) {
+        if (validarDados(nome)) {
             System.out.println("Dados validados!");
         } else System.out.println("Dados não validados!");
     }
 
-    private boolean validarDados(String dados){
-        return !dados.isEmpty();
+    private boolean validarDados(String nome){
+        return !nome.isEmpty();
     }
 }
