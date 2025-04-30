@@ -1,4 +1,25 @@
 package com.senai.aula07_mvc.crud_usuario.model;
 
+import java.util.List;
+
 public class SupervisorDAO {
+
+
+
+    public void atualizar(Supervisor supervisor) {
+
+    }
+
+    public void deletar(int id) {
+
+    }
+
+    public void salvar(Supervisor supervisor) {
+
+    }
+
+    public List<Supervisor> listar() {
+        List<Supervisor> lista;
+        return lista;
+    }
 }

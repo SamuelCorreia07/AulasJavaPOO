@@ -29,16 +29,17 @@ public class Main {
             System.out.println(menu);
             opcao = scanner.nextInt();
             scanner.nextLine();
+            System.out.println(
+                    """
+                    Qual tipo de usuário?
+                    1 - Operador
+                    2 - Supervisor
+                    """
+            );
+            int escolhaTipo = scanner.nextInt();
+
             switch (opcao) {
                 case 1:
-                    System.out.println(
-                            """
-                            Qual tipo de usuário?
-                            1 - Operador
-                            2 - Supervisor
-                            """
-                    );
-                    int escolhaTipo = scanner.nextInt();
                     System.out.println("Preencha os dados a seguir:");
                     int id = scanner.nextInt();
                     scanner.nextLine();
@@ -46,7 +47,11 @@ public class Main {
                     if (escolhaTipo == 1) {
                         String setor = scanner.nextLine();
                         Operador operador = new Operador(nome,id,setor);
-                        operadorController.cadastrarOperador(operador);
+                        if (operadorController.cadastrarOperador(operador)) {
+                            System.out.println("Cadastro efetuado com sucesso");
+                        } else {
+                            System.out.println("Cadastro não efeituado");
+                        }
                     } else if (escolhaTipo == 2) {
                         String area = scanner.nextLine();
                         Supervisor supervisor = new Supervisor(nome, id, area);
@@ -54,12 +59,54 @@ public class Main {
                     }
                     break;
                 case 2:
+                    System.out.println("Escolha um usuário para validar: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    if (escolhaTipo == 1) {
+                        operadorController.deletarOperador(id);
+                    } else if (escolhaTipo == 2) {
+                        supervisorController.deletarSupervisor(id);
+                    }
+
                     break;
                 case 3:
+                    if (escolhaTipo == 1) {
+                        operadorController.listarOperadores().forEach(System.out::println);
+                    } else if (escolhaTipo == 2) {
+                        supervisorController.listarSupervisores().forEach(System.out::println);
+                    }
+
+                    System.out.println("Escolha um usuário para validar: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Atualize as seguintes informações: ");
+                    System.out.print("\nNome: ");
+                    nome = scanner.nextLine();
+
+                    if (escolhaTipo == 1) {
+                        System.out.print("\nSetor: ");
+                        String setor = scanner.nextLine();
+                        Operador operador = new Operador(nome,id,setor);
+                        if (operadorController.atualizarOperador(operador)) {
+                            System.out.println("Atualização efetuada com sucesso");
+                        } else {
+                            System.out.println("Atualização não efeituado");
+                        }
+                    } else if (escolhaTipo==2) {
+                        System.out.println("\nÁrea: ");
+                        String area = scanner.nextLine();
+                        Supervisor supervisor = new Supervisor(nome,id,area);
+                        supervisorController.atualizarSupervisor(supervisor);
+                    }
+
                     break;
                 case 4:
-                    operadorController.listarOperadores().stream().forEach(System.out::println);
-                    supervisorController.listarSupervisores().stream().forEach(System.out::println);
+                    if (escolhaTipo == 1) {
+                        operadorController.listarOperadores().forEach(System.out::println);
+                    } else if (escolhaTipo == 2) {
+                        supervisorController.listarSupervisores().forEach(System.out::println);
+                    }
+
                     break;
                 case 5:
                     break;
