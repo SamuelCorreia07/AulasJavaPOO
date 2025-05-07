@@ -19,7 +19,7 @@ public class SupervisorDAO {
     }
 
     public List<Supervisor> listar() {
-        List<Supervisor> lista;
+        List<Supervisor> lista = List.of();
         return lista;
     }
 }

@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class OperadorDAO {
@@ -22,6 +23,10 @@ public class OperadorDAO {
         } catch (IOException e) {
             return new ArrayList<>();
         }
+    }
+
+    public OperadorDAO() {
+        operadores = carregar();
     }
 
     public void salvar (Operador operador) {
@@ -42,12 +47,25 @@ public class OperadorDAO {
     }
 
     public void atualizar(Operador operador) {
-        operadores.set(operador.getId(),operador);
-        salvarJson();
+        operadores.forEach(o -> {
+            if (o.getId()==operador.getId()) {
+                o.setNome(operador.getNome());
+                o.setSetor(operador.getSetor());
+                salvarJson();
+            }
+        });
     }
 
-    public void deletar(int id) {
-        operadores.remove(id);
-        salvarJson();
+    public boolean deletar(int id) {
+        Iterator<Operador> iterator = operadores.iterator();
+        while (iterator.hasNext()) {
+            Operador o = iterator.next();
+            if (o.getId() == id) {
+                iterator.remove();
+                salvarJson();
+                return true;
+            }
+        }
+        return false;
     }
 }

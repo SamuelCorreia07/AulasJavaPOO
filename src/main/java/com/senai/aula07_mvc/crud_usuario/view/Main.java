@@ -41,10 +41,13 @@ public class Main {
             switch (opcao) {
                 case 1:
                     System.out.println("Preencha os dados a seguir:");
+                    System.out.print("\nid: ");
                     int id = scanner.nextInt();
                     scanner.nextLine();
+                    System.out.print("\nnome: ");
                     String nome = scanner.nextLine();
                     if (escolhaTipo == 1) {
+                        System.out.print("\nsetor: ");
                         String setor = scanner.nextLine();
                         Operador operador = new Operador(nome,id,setor);
                         if (operadorController.cadastrarOperador(operador)) {
@@ -53,6 +56,7 @@ public class Main {
                             System.out.println("Cadastro não efeituado");
                         }
                     } else if (escolhaTipo == 2) {
+                        System.out.print("\nárea: ");
                         String area = scanner.nextLine();
                         Supervisor supervisor = new Supervisor(nome, id, area);
                         supervisorController.cadastrarSupervisor(supervisor);
@@ -117,7 +121,7 @@ public class Main {
                     scanner.close();
                     break;
                 default:
-                    System.out.println("Opção invãlida");
+                    System.out.println("Opção inválida");
                     break;
             }
         } while (opcao != 7);
