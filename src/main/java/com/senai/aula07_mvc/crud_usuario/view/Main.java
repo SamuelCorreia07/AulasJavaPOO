@@ -24,19 +24,22 @@ public class Main {
                     6 - Demitir operador
                     7 - Sair
                 """;
-        int opcao = 0;
+        int opcao;
+        int escolhaTipo = 0;
         do {
             System.out.println(menu);
             opcao = scanner.nextInt();
             scanner.nextLine();
+            if (opcao != 7) {
             System.out.println(
-                    """
-                    Qual tipo de usuário?
-                    1 - Operador
-                    2 - Supervisor
-                    """
-            );
-            int escolhaTipo = scanner.nextInt();
+                        """
+                        Qual tipo de usuário?
+                        1 - Operador
+                        2 - Supervisor
+                        """
+                );
+                escolhaTipo = scanner.nextInt();
+            }
 
             switch (opcao) {
                 case 1:
@@ -59,7 +62,9 @@ public class Main {
                         System.out.print("\nárea: ");
                         String area = scanner.nextLine();
                         Supervisor supervisor = new Supervisor(nome, id, area);
-                        supervisorController.cadastrarSupervisor(supervisor);
+                        if (supervisorController.cadastrarSupervisor(supervisor)) {
+                            System.out.println("Cadastro efetuado com sucesso");
+                        } else System.out.println("Cadastro não efeituado");
                     }
                     break;
                 case 2:
@@ -93,14 +98,14 @@ public class Main {
                         Operador operador = new Operador(nome,id,setor);
                         if (operadorController.atualizarOperador(operador)) {
                             System.out.println("Atualização efetuada com sucesso");
-                        } else {
-                            System.out.println("Atualização não efeituado");
-                        }
+                        } else System.out.println("Atualização não efeituado");
                     } else if (escolhaTipo==2) {
                         System.out.println("\nÁrea: ");
                         String area = scanner.nextLine();
                         Supervisor supervisor = new Supervisor(nome,id,area);
-                        supervisorController.atualizarSupervisor(supervisor);
+                        if (supervisorController.atualizarSupervisor(supervisor)) {
+                            System.out.println("Atualização efetuada com sucesso");
+                        } else System.out.println("Atualização não efeituado");
                     }
 
                     break;

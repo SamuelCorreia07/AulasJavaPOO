@@ -8,16 +8,15 @@ import java.util.List;
 public class SupervisorController {
     private SupervisorDAO supervisorDAO = new SupervisorDAO();
 
-    public List<Supervisor> listarSupervisores(){
-        return supervisorDAO.listar();
-    }
-
-
     public boolean cadastrarSupervisor(Supervisor supervisor) {
         if (supervisor != null) {
             supervisorDAO.salvar(supervisor);
             return true;
         } else return false;
+    }
+
+    public List<Supervisor> listarSupervisores(){
+        return supervisorDAO.listar();
     }
 
     public boolean atualizarSupervisor(Supervisor supervisor) {

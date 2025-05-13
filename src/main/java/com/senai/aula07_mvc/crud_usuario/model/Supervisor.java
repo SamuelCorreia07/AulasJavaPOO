@@ -15,4 +15,10 @@ public class Supervisor extends Usuario{
     public void setArea(String area) {
         this.area = area;
     }
+
+    @Override
+    public String toString() {
+        return  String.format("Id: %d, Nome: %s, Área: %s",
+                super.getId(), super.getNome(), area);
+    }
 }
