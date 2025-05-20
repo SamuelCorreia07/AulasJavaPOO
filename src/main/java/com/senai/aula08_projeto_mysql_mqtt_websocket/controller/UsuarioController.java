@@ -26,7 +26,7 @@ public class UsuarioController {
 
     public String atualizarUsuario(String tipo, int id, String nome, String dadoExtra, String login, String senha) {
         if (tipo.equals("1")) {
-            alunoDAO.atualizar(new Aluno(id, nome, dadoExtra,login, CriptografiaUtil.hash(senha)));
+            alunoDAO.atualizar(new Aluno(id, nome, dadoExtra,login,CriptografiaUtil.hash(senha)));
             return "Aluno atualizado.";
         } else if (tipo.equals("2")) {
             professorDAO.atualizar(new Professor(id, nome, dadoExtra,login,CriptografiaUtil.hash(senha)));

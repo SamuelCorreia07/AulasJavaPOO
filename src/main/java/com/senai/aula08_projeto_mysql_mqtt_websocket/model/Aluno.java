@@ -6,7 +6,7 @@ public class Aluno extends Usuario {
     private String idCartaoRfid;
 
 
-    public Aluno(int id, String nome,String login, String senha, String idCartaoRfid) {
+    public Aluno(int id, String nome, String idCartaoRfid, String login, String senha) {
         super(id, nome, login, senha);
         this.idCartaoRfid = idCartaoRfid;
     }

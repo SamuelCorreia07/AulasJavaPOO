@@ -3,7 +3,7 @@ package com.senai.aula08_projeto_mysql_mqtt_websocket.model;
 public class Professor extends Usuario {
     private String disciplina;
 
-    public Professor(int id, String nome, String login, String senha, String disciplina) {
+    public Professor(int id, String nome, String disciplina, String login, String senha) {
         super(id, nome, login, senha);
         this.disciplina = disciplina;
     }
@@ -15,7 +15,6 @@ public class Professor extends Usuario {
     public void setDisciplina(String disciplina) {
         this.disciplina = disciplina;
     }
-
     @Override
     public String getTipo() {
         return "Professor";

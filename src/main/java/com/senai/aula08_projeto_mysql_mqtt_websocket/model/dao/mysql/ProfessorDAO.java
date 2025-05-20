@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ProfessorDAO {
+public class ProfessorDAO  {
 
     public void inserir(Professor professor) {
         try (Connection conn = ConexaoMySQL.conectar()) {
